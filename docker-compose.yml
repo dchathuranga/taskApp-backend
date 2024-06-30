@@ -1,0 +1,28 @@
+version: '3.8'
+
+services:
+  mongodb:
+    image: mongo:latest
+    container_name: mongodb
+    ports:
+      - '27017:27017'
+    environment:
+      MONGO_INITDB_DATABASE: mydatabase
+    volumes:
+      - mongodb_data:/data/db
+
+  # backend:
+  #   build:
+  #     context: .
+  #     dockerfile: Dockerfile
+  #   container_name: backend
+  #   ports:
+  #     - '5000:5000'
+  #   environment:
+  #     MONGO_URI: mongodb://mongodb:27017/mydatabase
+  #   depends_on:
+  #     - mongodb
+
+volumes:
+  mongodb_data:
+    driver: local
